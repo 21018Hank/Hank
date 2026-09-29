@@ -1,55 +1,75 @@
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
 
 int main()
 {
-    long long a, b, min, max, i, length = 1, lengthmax = 1, j, x, y, temp;
-
+    unsigned int a, b, i, l=1, lmax=1,temp;
     while (cin >> a >> b)
     {
-        lengthmax = 1;
-
+        lmax = 1;
         if (a > b)
         {
-            max = a;
-            min = b;
+            ios_base::sync_with_stdio(false); 
+            cin.tie(NULL);
+            for (temp = b;temp <= a;temp++)
+            {
+                i = temp;
+                l = 1;
+                for (;;)
+                {
+                    if (i == 1)
+                    {
+                        break;
+                    }
+
+                    if (i % 2 == 0)
+                    {
+                        i = i / 2;
+                    }
+                    else
+                    {
+                        i = 3 * i + 1;
+                    }
+                    l++;
+                    
+                }
+                if (l > lmax)
+                {
+                    lmax = l;
+                }
+            }
         }
         else
         {
-            max = b;
-            min = a;
-        }
-        for (i = min;i <= max;i++)
-        {
-            temp = i;
-
-            length = 1;
-
-            for (;;)
+            for (temp = a;temp <= b;temp++)
             {
-                if (temp == 1)
+                i = temp;
+                l = 1;
+                for (;;)
                 {
-                    break;
-                }
+                    if (i == 1)
+                    {
+                        break;
+                    }
 
-                if (temp % 2 != 0)
+                    if (i % 2 == 0)
+                    {
+                        i = i / 2;
+                    }
+                    else
+                    {
+                        i = (3 * i) + 1;
+                    }
+                    l++;
+                    
+                }
+                if (l > lmax)
                 {
-                    temp = temp * 3 + 1;
+                    lmax = l;
                 }
-                else
-                {
-                    temp = temp / 2;
-                }
-                length++;
-
-            }
-
-            if (length > lengthmax)
-            {
-                lengthmax = length;
             }
         }
 
-        cout << a << " " << b << " " << lengthmax << endl;
-    }
+        cout << a << " " << b << " " << lmax << endl;
+    }  
 }
