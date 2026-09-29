@@ -3,14 +3,14 @@ using namespace std;
 
 int main()
 {
+    ios_base::sync_with_stdio(false); 
+    cin.tie(NULL);
     unsigned int a, b, i, l=1, lmax=1,temp;
     while (cin >> a >> b)
     {
         lmax = 1;
         if (a > b)
         {
-            ios_base::sync_with_stdio(false); 
-            cin.tie(NULL);
             for (temp = b;temp <= a;temp++)
             {
                 i = temp;
