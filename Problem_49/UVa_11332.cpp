@@ -1,43 +1,34 @@
 #include <iostream>
 #include <string>
+#include <cmath>
+#include <algorithm>
 using namespace std;
 
 int main()
 {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-
-    long long sum,b,i;
-    string a;
-
-    while (cin >> a)
+    long long a,i,len;
+    string s;
+    while (cin >> a && a!=0)
     {
-        if (a == "0")
-        {
-            break;
-        }
-        
         for (;;)
         {
-            int lena = 0;
-            sum = 0;
-            lena = a.length();
-            for (i = 0;i < lena;i++)
+            if (a >= 0 && a <= 9)
             {
-                b = a[i] - '0';
-                sum = sum + b;
-            }
-            if (0 < sum && sum < 10)
-            {
-                cout << sum << endl;
+                cout << a << endl;
                 break;
             }
             else
             {
-                a = "";
-                a = to_string(sum);
+                s = to_string(a);
+                len = s.length();
             }
-        }    
+            a = 0;
+            for (i = 0;i < len;i++)
+            {
+                a = a + (s[i] - '0');
+            }
+            s = "";
+        }
     }
     return 0;
 }
