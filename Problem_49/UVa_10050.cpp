@@ -1,60 +1,50 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
+#include <string>
+#include <cmath>
 using namespace std;
 
 int main()
 {
-    int n, day, i, j, k, partynum, party[200],lostday,judge,final;
-
+    int n,day,po,i,j,x,k,sum;
+    vector<int>pos;
     cin >> n;
-    
-    
-    
     for (i = 0;i < n;i++)
     {
+        pos.clear();
+        sum = 0;
         cin >> day;
-        cin >> partynum;
-        vector<bool>visit(day + 1, false);
-        vector<int>days(day+1, 0);
-        visit.resize(day + 1, false);
-        lostday = 0;
-        judge = 0;
-        final = 0;
-        for (j = 0;j <= day;j++)
+        cin >> po;
+        for (j = 0;j < po;j++)
         {
-            days[j] = j;
+            cin >> x;
+            pos.push_back(x);
         }
-
-        for (j = 0;j < partynum;j++)
+        vector<int>days(day, 0);
+        for (j = 0;j < po;j++)
         {
-            cin >> party[j];
-        }
-        for (j = 0;j < partynum;j++)
-        {
-            for (k = 0;k <= day;k++)
+            for (k = pos[j];k <= day;k+=pos[j])
             {
-                if (days[k] % party[j] == 0)
-                {
-                    visit[k] = true;
-                }
+                days[k-1] = 1;
             }
         }
-        for (j = 1;j <= day;j++)
+        for (j = 5;j < day;j+=7)
         {
-            if ((days[j] % 7 == 0 || days[j] % 7 == 6) && (visit[j]==true))
+            days[j] = 0;
+        }
+        for (j = 6;j < day;j += 7)
+        {
+            days[j] = 0;
+        }
+        for (j = 0;j < day;j++)
+        {
+            if (days[j] == 1)
             {
-                lostday++;
+                sum++;
             }
         }
-        for (j = 1;j <= day;j++)
-        {
-            if (visit[j] == true)
-            {
-                judge++;
-            }
-        }
-        final = judge - lostday;
-        cout << final << endl;
+        cout << sum << endl;
     }
     return 0;
 }
