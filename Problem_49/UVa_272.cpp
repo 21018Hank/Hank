@@ -4,27 +4,23 @@ using namespace std;
 
 int main()
 {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    
-    char c;
-    int t=0;
-    
-    while (cin.get(c))
+    char ch;
+    int judge = 0;
+    while (cin.get(ch))
     {
-        if((c=='"')&&(t==0))
+        if (ch == '"' && judge == 0)
         {
             cout << "``";
-            t=1;
+            judge = 1;
         }
-        else if((c=='"')&&(t==1))
+        else if (ch == '"' && judge == 1)
         {
             cout << "''";
-            t=0;
+            judge = 0;
         }
-        else if (c != '\r')
+        else
         {
-            cout << c;
+            cout << ch;
         }
     }
     return 0;
