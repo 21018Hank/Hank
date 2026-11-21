@@ -2,7 +2,6 @@
 #include <string>
 using namespace std;
 
-
 int cal(int sum)
 {
     string sss;
@@ -17,7 +16,7 @@ int cal(int sum)
 int main()
 {
     string s;
-    while (getline(cin, s) && s != "0")
+    while (cin >> s && s != "0")
     {
         int d = 1;
         int sum = 0;
